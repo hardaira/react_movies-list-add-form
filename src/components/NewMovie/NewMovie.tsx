@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
+import { Movie } from '../../types/Movie';
 import { TextField } from '../TextField';
+
 type Props = {
-  onSubmit: (newMovie: {
-    title: string;
-    description: string;
-    imageUrl: string;
-    imdbUrl: string;
-    imdbId: string;
-  }) => void;
+  onSubmit: (newMovie: Movie) => void;
 };
 export const NewMovie: React.FC<Props> = ({ onSubmit }) => {
   // Increase the count after successful form submission
@@ -44,21 +40,11 @@ export const NewMovie: React.FC<Props> = ({ onSubmit }) => {
 
     // Validation
 
-    if (
-      newTitle.trim() === '' ||
-      newDescription.trim() === '' ||
-      !newImageURL.startsWith('http') ||
-      !newImdbUrl.startsWith('http') ||
-      newImdbId.trim() === ''
-    ) {
-      return;
-    }
-
     // Add the new movie to the movies list
     const newMovie = {
       title: newTitle,
       description: newDescription,
-      imageUrl: newImageURL,
+      imgUrl: newImageURL,
       imdbUrl: newImdbUrl,
       imdbId: newImdbId,
     };
