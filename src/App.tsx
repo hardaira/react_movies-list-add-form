@@ -13,7 +13,7 @@ const initialMovies: Movie[] = moviesFromServer.map(movie => ({ ...movie }));
 
 export const App: React.FC<Props> = () => {
   const [movies, setMovies] = useState<Movie[]>(initialMovies);
-  const addMovie = (newMovie: Movie) => {
+  const onAdd = (newMovie: Movie) => {
     setMovies(currentMovies => [...currentMovies, newMovie]);
   };
 
@@ -23,7 +23,7 @@ export const App: React.FC<Props> = () => {
         <MoviesList movies={movies} />
       </div>
       <div className="sidebar">
-        <NewMovie onSubmit={addMovie} />
+        <NewMovie onSubmit={onAdd} />
       </div>
     </div>
   );
